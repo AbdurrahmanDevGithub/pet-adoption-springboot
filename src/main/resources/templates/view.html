@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>View Pets</title>
+<style>
+    .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Adjust spacing between boxes */
+}
+
+.box {
+    width: calc(23% - 20px); /* Calculate width minus margins */
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease; /* Add a smooth transition */
+}
+
+.box:hover {
+    transform: translateY(-5px); /* Add a subtle hover effect */
+}
+
+.box p {
+    margin: 5px 0;
+}
+
+.action-button {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+
+.action-button button {
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease; 
+}
+
+.action-button button:hover {
+    background-color: #45a049; 
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+    
+    <div th:each="pet:${petList}" class="box">
+        
+        
+        <p><strong>Pet Name:</strong> <span th:text="${pet.pet_name}"></span></p>
+        <p><strong>Image:</strong> <span th:text="${pet.image}"></span></p>
+        <p><strong>Age:</strong> <span th:text="${pet.age}"></span></p>
+        <p><strong>Color:</strong> <span th:text="${pet.color}"></span></p>
+        <p><strong>Gender:</strong> <span th:text="${pet.gender}"></span></p>
+        <p><strong>Vaccinated:</strong> <span th:text="${pet.vaccinated}"></span></p>
+        
+        <a th:href="@{/showAdopt(owner_id=${pet.owner_id}, pet_name=${pet.pet_name},pet_id=${pet.pet_id},image=${pet.image})}" class="action-button">
+            <button>Adopt</button>
+        </a>
+    </div>
+</div>
+</body>
+</html>

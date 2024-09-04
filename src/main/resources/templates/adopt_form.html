@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="ISO-8859-1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Adoption Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        form {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+            max-width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="file"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        input[readonly] {
+            background-color: #f0f0f0;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <form action="/adoptProcess" method="post">
+        <h1>Pet Adoption Form</h1>
+        <label for="owner_id">Owner Id</label>
+        <input type="hidden" id="owner_id" name="owner_id" th:value="${owner_id}" readonly="readonly"/>
+
+        <label for="pet_name">Pet Name:</label>
+        <input type="text" id="pet_name" name="pet_name" th:value="${pet_name}" readonly="readonly"/>
+
+        <input type="hidden" name="pet_id" id="pet_id" th:value="${pet_id}" readonly="readonly">
+
+        <label for="image">Image:</label>
+        <input type="file" id="image" name="image">
+
+        <label for="adopt_name">Your Name:</label>
+        <input type="text" name="adopt_name" id="adopt_name">
+
+        <label for="contact">Contact:</label>
+        <input type="text" name="contact" id="contact">
+
+        <label for="adopt_city">Your City:</label>
+        <input type="text" name="adopt_city" id="adopt_city">
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email">
+
+        <label for="reason">Why you adopting this pet?</label>
+        <input type="text" id="reason" name="reason">
+
+        <button type="submit">Adopt</button>
+    </form>
+</body>
+</html>
